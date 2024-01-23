@@ -117,10 +117,10 @@ export default function AddPlant() {
     <div className={`add ${style.addform}`}>
       <div className='model'>
         <div className={style.headText}>
-        <button style={{width:"200px"}} ><a href='/contribution' style={{color:'white',textDecoration:"none"}}>contribution</a></button>
+        <button style={{width:'180px', height:'50px'}} ><a href='/contribution' style={{color:'white',textDecoration:"none"}}>Contribution</a></button>
 
         <div className={style.headText_h1}>
-          <h1 className={style.headForm}><span className='font-bold'>add new Contribution </span></h1>
+          <h1 className={style.headForm} style={{ marginRight: "50px" }}><span className='font-bold'>Add New Contribution </span></h1>
 
         </div>
 
