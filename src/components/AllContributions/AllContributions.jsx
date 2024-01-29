@@ -55,9 +55,9 @@ const AllContributions = () => {
         className="text-4xl font-bold mb-9"
         style={{ textShadow: "2px 5px 4px rgba(0, 0, 0, 0.4)" }}
       >
-        {" "}
         المساهمات
       </h1>
+      
       <div className="w-full mb-8">
         <input
           type="text"
@@ -77,14 +77,14 @@ const AllContributions = () => {
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 p-10">
+        {noMatch && (
+        <div className="col-span-1 lg:col-span-3 flex justify-center items-center h-48">
+          <p className="text-red-700 font-semibold text-center text-3xl">
+          لا يوجد نبات يطابق بحثك
+          </p>
+        </div>
+        )}
 
-      {noMatch && (
-  <div className="col-span-1 lg:col-span-3 flex justify-center items-center h-48">
-    <p className="text-red-700 font-semibold text-center text-3xl">
-      لا يوجد نبات يطابق بحثك
-    </p>
-  </div>
-)}
         {filteredPlants.map((plant, index) => (
           <div
             key={plant._id}
