@@ -1,9 +1,6 @@
 .error img{
     margin-top: 3rem;
-    /* width: 60.2rem;
-    height: 34.5rem; */
-    width: 65%;
-
+    width: 60%;
 }
 
 .error .image{
@@ -11,6 +8,7 @@
     justify-content: center;
     width: 100%;
 }
+
 .error{
     width: 80%;
     margin: auto;
