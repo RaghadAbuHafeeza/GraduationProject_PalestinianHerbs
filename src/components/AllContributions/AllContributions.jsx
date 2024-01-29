@@ -6,6 +6,7 @@ const AllContributions = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [filteredPlants, setFilteredPlants] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [noMatch, setNoMatch] = useState(false); // حالة عدم وجود نتيجة مطابقة
 
   useEffect(() => {
     const fetchData = async () => {
@@ -27,6 +28,7 @@ const AllContributions = () => {
 
   const handleSearch = (event) => {
     const searchTerm = event.target.value.toLowerCase();
+    setSearchTerm(searchTerm);
 
     // البحث في اسم النبات بالعربي أو بالإنجليزي
     const results = plants.filter(
@@ -35,26 +37,54 @@ const AllContributions = () => {
         plant.EnglishName.toLowerCase().includes(searchTerm)
     );
 
-    setSearchTerm(searchTerm);
     setFilteredPlants(results);
-  };
 
+    // تحديث حالة عدم وجود النتيجة المطابقة
+    const isCharNotFound = results.every(
+      (plant) =>
+        !plant.ArabicName.toLowerCase().includes(searchTerm) &&
+        !plant.EnglishName.toLowerCase().includes(searchTerm)
+    );
+
+    setNoMatch(isCharNotFound && searchTerm !== "");
+  };
 
   return (
     <div className="container mx-auto my-8 text-center">
-      <h1 className="text-4xl font-bold mb-9" style={{ textShadow: '2px 5px 4px rgba(0, 0, 0, 0.4)'}} > المساهمات</h1>
+      <h1
+        className="text-4xl font-bold mb-9"
+        style={{ textShadow: "2px 5px 4px rgba(0, 0, 0, 0.4)" }}
+      >
+        {" "}
+        المساهمات
+      </h1>
       <div className="w-full mb-8">
-  <input
-    type="text"
-    placeholder="... ابحث عن نبات"
-    className="w-1/2 border-black p-3 pl-10 m-auto rounded-md border focus:outline-none text-right"
-    value={searchTerm}
-    onChange={handleSearch}
-  />
-  <button className="bg-green-800 text-white py-3 ms-3 px-4 rounded-md" ><a href="/usercontribution" style={{textDecoration:"none",color:"white"}}>اضافة مساهمة</a></button>
-</div>
+        <input
+          type="text"
+          placeholder="... ابحث عن نبات"
+          className="w-1/2 border-black p-3 pl-10 m-auto rounded-md border focus:outline-none text-right"
+          value={searchTerm}
+          onChange={handleSearch}
+        />
+        <button className="bg-green-800 text-white py-3 ms-3 px-4 rounded-md">
+          <a
+            href="/usercontribution"
+            style={{ textDecoration: "none", color: "white" }}
+          >
+            اضافة مساهمة
+          </a>
+        </button>
+      </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 p-10">
+
+      {noMatch && (
+  <div className="col-span-1 lg:col-span-3 flex justify-center items-center h-48">
+    <p className="text-red-700 font-semibold text-center text-3xl">
+      لا يوجد نبات يطابق بحثك
+    </p>
+  </div>
+)}
         {filteredPlants.map((plant, index) => (
           <div
             key={plant._id}
@@ -80,10 +110,14 @@ const AllContributions = () => {
             />
           </div>
         ))}
-  
       </div>
     </div>
   );
 };
 
 export default AllContributions;
+
+
+
+
+
