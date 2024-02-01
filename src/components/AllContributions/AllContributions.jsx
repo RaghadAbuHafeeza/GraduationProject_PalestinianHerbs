@@ -16,6 +16,7 @@ const AllContributions = () => {
         const { data } = await axios.get("https://spotless-moth-rugby-shirt.cyclic.app/api/v1/contribution/", { headers });
         setPlants(data.contribution);
         setFilteredPlants(data.contribution);
+        console.log("الداتا تاعت المساهمات99999", data)
       } catch (error) {
         console.error("حدث خطأ أثناء جلب البيانات:", error);
       } finally {
@@ -97,7 +98,7 @@ const AllContributions = () => {
                 className="w-8 h-8 object-cover rounded-full mr-2"
               />
               <p className="text-lg text-gray-600 mb-2">
-                {plant.createdBy.userName}
+              {plant.createdBy ? plant.createdBy.userName : 'Unknown User'}
               </p>
             </div>
 

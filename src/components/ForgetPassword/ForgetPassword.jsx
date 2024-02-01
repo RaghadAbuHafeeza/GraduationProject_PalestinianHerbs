@@ -24,8 +24,8 @@ function ForgetPassword() {
         } else {
           console.log("Validation successful");
           console.log('submit code   ', UserEmail.code)
-          // let { data } = await axios.patch('https://spotless-moth-rugby-shirt.cyclic.app/api/v1/auth/forgetpassword', UserEmail)
-           let {data}=await axios.post('http://localhost:3100/api/v1/auth/forgetpassword',UserEmail)
+          let { data } = await axios.patch('https://spotless-moth-rugby-shirt.cyclic.app/api/v1/auth/forgetpassword', UserEmail)
+          // let {data}=await axios.post('http://localhost:3100/api/v1/auth/forgetpassword',UserEmail)
 
           console.log('data', data)
           goToLogin()
@@ -52,6 +52,7 @@ function ForgetPassword() {
       })
       console.log("email",UserEmail.email);
       let navigate = useNavigate();
+
       function goToLogin(){
         navigate('/login')
       }
@@ -105,7 +106,7 @@ function ForgetPassword() {
               <label htmlFor='newPassward'> كلمة المرور</label>
               <div className="input2 flex" >
 
-                <input type='password' id="password" name="passward" placeholder='ادخل كلمة المرور' required className='input1' onChange={getFormValue}></input>
+                <input type='password' id="password" name="newPassward" placeholder='ادخل كلمة المرور' required className='input1' onChange={getFormValue}></input>
                 <RiLockPasswordFill className="icon" />
               </div>
             </div>

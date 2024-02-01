@@ -38,7 +38,7 @@ export default function ScanImage(props) {
       
 console.log([...formData.entries()]);
       props.setLoading(true);
-      const response = await axios.patch('http://localhost:3002/api/v1/user',
+      const response = await axios.patch('http://localhost:3005/api/v1/user',
        formData, {headers});
        const imgPredict = response.data.imgPredict;
 

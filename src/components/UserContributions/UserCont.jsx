@@ -117,7 +117,7 @@ export default function UserCont() {
         }
       } catch (error) {
         console.error('Error uploading file:', error);
-        setBackendError('Error uploading file');
+        setBackendError('خطأ أثناء رفع  ملف الصورة ');
       }
     }
   };
